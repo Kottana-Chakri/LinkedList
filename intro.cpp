@@ -15,7 +15,9 @@ class Solution{
 
 };
 int main(){
-    Node x = Node(2,nullptr);
-    cout << x.val << endl;
+    //Node x = Node(2,nullptr);
+    //cout << x.val << endl;
+    Node* x = new Node(2,nullptr);
+    cout << x->val << endl;
     return 0;
 }
