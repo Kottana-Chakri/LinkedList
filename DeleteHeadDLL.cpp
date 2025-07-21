@@ -39,6 +39,17 @@ Node * DLList(vector<int> &arr){
     delete prev;
     return head;
  }
+ Node * DeleteTail(Node * head){
+    if(head==nullptr || head->next == nullptr){return nullptr;}
+    Node* tail = head;
+    while(tail->next!=nullptr){
+        tail=tail->next; 
+    }
+    Node*newTail=tail->back;
+    newTail->next=nullptr;
+    tail->back=nullptr;
+    return head;
+ }
 void print(Node*head){
     while(head!=nullptr){
         cout<<head->val<<" ";
@@ -49,7 +60,8 @@ void print(Node*head){
 int main(){
     vector<int> arr={1,2,3,4};
     Node * head = DLList(arr);
-    head=DeleteHead(head);
+    //head=DeleteHead(head);
+    head = DeleteTail(head);
     print(head);
     return 0;
 
