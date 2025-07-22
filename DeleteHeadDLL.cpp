@@ -50,6 +50,38 @@ Node * DLList(vector<int> &arr){
     tail->back=nullptr;
     return head;
  }
+ Node * DeleteKthNode(Node*head,int k){
+    int count=0;
+    Node * temp =head;
+    while(temp!=NULL){
+        count++;
+        if(count==k){
+            break;
+        }
+        temp=temp->next;
+    }
+    Node * prev = temp->back;
+    Node * after = temp->next;
+    if(prev==NULL && after == NULL){
+        delete temp;
+        return NULL;
+    }
+    if(prev==NULL){
+        DeleteHead(temp);
+        return head;
+    }
+    if(after==NULL){
+        DeleteTail(temp);
+        return head;
+    }
+    else{
+        prev->next=after;
+        after->back=prev;
+        temp->next=NULL;
+        temp->back=NULL;
+    }
+    return head;
+ }
 void print(Node*head){
     while(head!=nullptr){
         cout<<head->val<<" ";
@@ -61,7 +93,8 @@ int main(){
     vector<int> arr={1,2,3,4};
     Node * head = DLList(arr);
     //head=DeleteHead(head);
-    head = DeleteTail(head);
+    //head = DeleteTail(head);
+    head = DeleteKthNode(head,2);
     print(head);
     return 0;
 
