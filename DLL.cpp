@@ -1,3 +1,4 @@
+//doubly linked list
 #include<bits/stdc++.h>
 using namespace std;
 struct Node{
